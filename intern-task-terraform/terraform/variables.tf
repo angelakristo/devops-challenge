@@ -25,3 +25,33 @@ variable "ssh_allowed_cidr" {
     error_message = "ssh_allowed_cidr must be a valid CIDR and must not be 0.0.0.0/0."
   }
 }
+
+variable "ami_id" {
+  description = "Ubuntu AMI ID. Verify region and architecture before any real deployment."
+  type        = string
+  default     = "ami-0e86e20dae9224db8"
+}
+
+variable "instance_type" {
+  description = "EC2 instance type."
+  type        = string
+  default     = "t3.micro"
+}
+
+variable "key_name" {
+  description = "Optional existing EC2 key pair for the image's default user."
+  type        = string
+  default     = null
+}
+
+variable "admin_user" {
+  description = "Name of the non-root admin user created by cloud-init."
+  type        = string
+  default     = "deploy"
+}
+
+variable "admin_ssh_public_key" {
+  description = "Optional SSH public key for admin_user."
+  type        = string
+  default     = null
+}
